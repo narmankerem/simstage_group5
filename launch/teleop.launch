@@ -1,0 +1,10 @@
+<launch>
+    <node pkg="stage_ros" type="stageros" name="stageros" args="$(find simstage_group5)/worlds/rooms.world" respawn="false" output="log"/>
+    <node pkg="gmapping" type="slam_gmapping" name="gmapping" output="screen">
+        <param name="scan" value="base_scan"/>
+        <remap from="scan" to="base_scan"/>
+        
+    </node>
+    <node pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" name="teleop"/>
+    <node pkg="rviz" type="rviz" name="rviz" args="$find stage_ros)/rviz/stage.rviz"/>
+</launch>

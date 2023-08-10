@@ -7,6 +7,8 @@
 #include <tf/transform_datatypes.h>
 
 
+
+
 #include <iostream>
 
 
@@ -22,12 +24,20 @@ void laserCallback(const sensor_msgs::LaserScan::ConstPtr& msg){
     ROS_INFO("obstacle distance: %f", obstacle_distance);
 }
 
+
+
+
+
 void odomCallback(const nav_msgs::Odometry::ConstPtr& msg){
   robot_x = msg->pose.pose.position.x;
   robot_y = msg->pose.pose.position.y;
   robot_yaw = tf::getYaw(msg->pose.pose.orientation);
   //ROS_INFO("x: %f, y: %f, yaw: %f", robot_x, robot_y, robot_yaw);
 }
+
+
+
+
 
 int main(int argc, char **argv){
     
@@ -41,6 +51,7 @@ int main(int argc, char **argv){
   ros::Subscriber laser_sub = n.subscribe("base_scan", 1000, laserCallback);
   //Subscriber for /odom
   ros::Subscriber odom_sub = n.subscribe("odom", 1000, odomCallback);
+  
 
   ros::Rate loop_rate(10); //10 Hz
 

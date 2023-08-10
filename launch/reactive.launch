@@ -1,6 +1,7 @@
 <launch>
 <node pkg="stage_ros" type="stageros" name="stageros" args="$(find simstage_group5)/worlds/rooms.world" respawn="false" output="log"/>
 
+
 <node pkg="simstage_group5" type="autonomous_navigation" name="autonomous_navigation" output="screen"/>
 
 </launch>
